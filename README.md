@@ -85,72 +85,70 @@ app.get('/', (req, res) => {
 ```
 
 
-📋 Interview Prep Questions
-React
-What is the virtual DOM and how does React use it?
-
-Explain the purpose of useEffect().
-
-How does state lifting work between components?
-
-Node.js / Express
-What is middleware in Express?
-
-How does the event loop work in Node.js?
-
-Difference between app.use() and app.get()?
-
-MongoDB
-Difference between .find() vs .findOne()?
-
-How do you model one-to-many relationships in MongoDB?
-
-What is an aggregation pipeline?
-
-Git
-How to resolve a merge conflict?
-
-Difference between git pull and git fetch?
-
-What does git stash do?
-
-🚀 Deployment Plan
- Deploy frontend (React) on Netlify
-
- Deploy backend (Express) on Render
-
- Connect MongoDB Atlas
-
- Setup environment variables using .env
-
-📆 Timeline Plan
-Week	Topics
-Week 1	HTML, CSS, JS, Git
-Week 2	React
-Week 3	Node.js
-Week 4	Express.js + MongoDB
-Week 5	Auth, APIs, Final Project
-Week 6	Deployment + Mock Interview
+### Preparation Questions 
+```
+Psquare Interview high posibility questions 
 
 
-🧾 Notes
-All tasks are self-built using custom code (no boilerplate).
+1. What is the difference between id and class in HTML?
+2. How does the box model work in CSS?
+3. What is event bubbling in JavaScript?
+4. What is the difference between functional and class components?
+5. Explain useEffect() and its dependency array.
+6. What is the virtual DOM?
 
-This repo serves as my public journal to show consistency and skills.
+- How does state lifting work in React?
 
-Advanced Node.js concepts are being updated daily.
+🧪 Task:
+Build a simple Todo App with CRUD functionality using React. Add filtering (All, Completed, Pending) using useState and useEffect.
 
-I am following a disciplined weekly schedule till the deadline.
+1. How does middleware work in Express?
+2. What is the difference between app.use() and app.get()?
+3. How does Node handle asynchronous code?
+4. What is event loop in Node.js?
 
-🔗 Resources & Tools
+🧪 Task:
+Build a REST API to manage users (CRUD). Each user has a name, email, and phone number. Include proper status codes and JSON responses.
 
-💻 MongoDB Atlas
+1. What is the difference between find() and findOne()?
+2. How do you perform aggregation in MongoDB?
+3. How do you model relationships in MongoDB?
 
-🧰 Postman
+🧪 Task:
+Create a MongoDB schema for an e-commerce app with products, users, and orders. Include relationships using references.
 
-🔧 Render
+1. What is the difference between git pull and git fetch?
+2. How do you resolve merge conflicts?
+3. What does git stash do?
 
-📦 Netlify
+🧪 Task:
+Push a MERN app to GitHub, create a new branch for “login feature,” merge it into main with a pull request.
 
-📝 MERN Stack Notes
+1. How do you handle errors in API calls?
+2.What is CORS and how to handle it in Express?
+3. How do you test APIs with Postman?
+
+🧪 Task:
+Integrate your React Todo App with your Express API. Store todos in MongoDB, and perform all CRUD via backend API.
+
+1. Difference between authentication and authorization?
+2. How does JWT work?
+3. How do you protect routes in Express?
+
+🧪 Task:
+Implement login and signup functionality with JWT tokens and protected dashboard route in React.
+
+1. How do you deploy a full-stack app?
+2. What is environment variable and how do you manage it in deployment?
+
+🧪 Task:
+Deploy your MERN app with frontend on Netlify and backend on Render. Connect to MongoDB Atlas. Use .env for secrets.
+
+1. Agile & Scrum understanding
+2. Unit Testing using Jest or Mocha
+3. Debugging skills using Chrome DevTools
+4. How do you handle state management across multiple components in React?
+5. What is the difference between PUT and PATCH methods in REST?
+6. How do you design a schema for nested comments in MongoDB?
+```
 
