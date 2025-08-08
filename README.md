@@ -67,14 +67,18 @@ function test() {
 test(); // Output?
 ```
 
-```React 
+### React
+
+``` 
 useEffect(() => {
   console.log("Mounted or Updated:", count);
 }, [count]);
 // What triggers this useEffect?
 ```
 
-``` Express Middleware
+### Express Middleware
+
+``` 
 app.use((req, res, next) => {
   console.log("Middleware 1");
   next();
