@@ -40,7 +40,9 @@ app.get("/books",(req,res)=>{
     res.send("All Books Are Here");
 })
 app.get("/books/:id",(req,res)=>{
-    let Id=req.params.id;
+    let Id=parseInt(req.params.id);
+    if(isNaN(Id))
+        return res.status(400).json({error:`id must be typr of number`});
     const book=books.find(book=>book.id==Id);
     if(book){
         res.json(book);
@@ -64,8 +66,10 @@ app.post("/books",(req,res)=>{
     
 })
 app.delete("/books/:id",(req,res)=>{
-    let Id=req.params.id
-    if(books.find(book=>book.id==Id)){
+    let Id=parseInt(req.params.id)
+    if(isNaN(Id))
+        return res.status(400).json({error:`id must be typr of number`});
+    if(books.find(book=>book.id===Id)){
         books=books.filter(book=>book.id!=Id)
     res.json({response:`Book with id: ${Id} deleted successfully`})
     }
