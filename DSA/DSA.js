@@ -14,15 +14,9 @@ function BinarySearch(arr,n){
     if(n===arr[mid]){
         return mid;
     }else if(n<arr[mid]){
-        for(let i=0;i<mid;i++){
-            leftarr.push(arr[i])
-        }
         console.log("left: ",leftarr)
         return BinarySearch(leftarr,n)
     }else if(n>arr[mid]){
-        for(let i=mid+1;i<arr.length;i++){
-            rightarr.push(arr[i])
-        }
         console.log("right: ",rightarr)
         return BinarySearch(rightarr,n)
     }else{
