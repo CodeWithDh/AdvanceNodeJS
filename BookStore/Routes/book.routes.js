@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {books} =require("../Db/Book.db")
+let {books} =require("../Models/Book.db")
 
 router.get("/",(req,res)=>{
     res.json(books)
@@ -39,7 +39,7 @@ router.delete("/:id",(req,res)=>{
         return res.status(400).json({error:`id must be typr of number`});
     if(books.find(book=>book.id===Id)){
         books=books.filter(book=>book.id!=Id)
-    res.json({response:`Book with id: ${Id} deleted successfully`})
+        return res.json({response:`Book with id: ${Id} deleted successfully`})
     };
     res.status(404).json(`Book id : ${Id} not found`)
     
