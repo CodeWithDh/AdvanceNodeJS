@@ -1,8 +1,8 @@
 const {pgTable,uuid,integer,varchar,text} =require("drizzle-orm/pg-core")
-const {authorsTable} = require("./author.models")
+const authorsTable = require("./author.models")
 
-export const booksTable=pgTable("books",{
-    id:integer().uuid().primaryKey(),
+const booksTable=pgTable("books",{
+    id:uuid().primaryKey().defaultRandom(),
     title:varchar({ length:100 }).notNull(),
     description:text(),
     authorId:uuid()
@@ -10,4 +10,4 @@ export const booksTable=pgTable("books",{
     .notNull()
 })
 
-module.exports= booksTable
+module.exports=booksTable

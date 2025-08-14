@@ -4,10 +4,10 @@ const{defineConfig}=require("drizzle-kit")
 
 const config=defineConfig({
     out:'./drzzile',
-    schema:'./models/index.js',
+    schema:"./models/index.models.js",
     dialect:"postgresql",
     dbCredentials:{
-        url:process.env.database_url,
+        url:process.env.DATABASE_URL,
     }
 })
 
