@@ -1,8 +1,12 @@
 const express=require("express");
 const router=express.Router();
-let {books} =require("../Models/Book.db")
+const {booksTable,authorsTable} =require("../Models/index.models")
+const db =require("../db/index")
 
-router.get("/",(req,res)=>{
+
+
+router.get("/",async(req,res)=>{
+    const books = await db.select().from(booksTable)
     res.json(books)
     // console.log(req.body.name);
 })
