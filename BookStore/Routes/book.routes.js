@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const {booksTable,authorsTable} =require("../Models/index.models")
+const {eq, Table} =require("drizzle-orm")
 const db =require("../db/index")
 
 
@@ -10,42 +11,44 @@ router.get("/",async(req,res)=>{
     res.json(books)
     // console.log(req.body.name);
 })
-router.get("/:id",(req,res)=>{
-    let Id=parseInt(req.params.id);
-    if(isNaN(Id))
-        return res.status(400).json({error:`id must be typr of number`});
-    const book=books.find(book=>book.id==Id);
+router.get("/:id",async(req,res)=>{
+    let Id=req.params.id;
+    const [book]= await db
+    .select()
+    .from(booksTable)
+    .where(table=> eq(table.id,Id))// it will return array as resuplt so we are destructuring it
+    .limit(1)
     if(book){
         return res.status(200).json(book);
     };
     res.status(404).json({message:"Book Not Found"})
     // res.send("Here is you Book of Id : "+Id);
 })
-router.post("/",(req,res)=>{
-    let {title,author}=req.body;
+router.post("/",async(req,res)=>{
+    let {title,authorId,description}=req.body;
     if(!title||title.trim()==='') return res.status(400).json({Error:"Title should not be empty"});
-    if(!author||author.trim()==='') return res.status(400).json({Error:"Author is Required"});
 
     else{
-        let book={
-        id:books.length+1,
-        title:title,
-        author:author
+        const [result]=await db.insert(booksTable)
+        .values({
+            title,
+            description,
+            authorId
+        }).returning({
+            id:booksTable.id,
+        })
+        if(result.id){
+            res.status(201).json({response:"Book created"})
+        }else{
+            res.status(400).json({error:"Something went wrong while creating book."})
         }
-        books.push(book)
-        res.status(201).json({response:"Book created"})
     }
     
 })
-router.delete("/:id",(req,res)=>{
-    let Id=parseInt(req.params.id)
-    if(isNaN(Id))
-        return res.status(400).json({error:`id must be typr of number`});
-    if(books.find(book=>book.id===Id)){
-        books=books.filter(book=>book.id!=Id)
-        return res.json({response:`Book with id: ${Id} deleted successfully`})
-    };
-    res.status(404).json(`Book id : ${Id} not found`)
+router.delete("/:id",async(req,res)=>{
+    let Id=req.params.id
+    await db.delete(booksTable).where(eq(booksTable.id,Id))
+    res.status(201).json(`Book id : ${Id} is deleted`)
     
 })
 
