@@ -7,21 +7,26 @@ function fibonacci(n){
     }
 }
 
-function BinarySearch(arr,n){
-    let mid=Math.floor((arr.length)/2);
-    let leftarr=[];
-    let rightarr=[];
-    if(n===arr[mid]){
+function BinarySearch(arr,target){
+    let mid=Math.floor(arr.length/2);
+    let leftArr=[];
+    let rightArr=[];
+
+    if(arr[mid]===target){
         return mid;
-    }else if(n<arr[mid]){
-        console.log("left: ",leftarr)
-        return BinarySearch(leftarr,n)
-    }else if(n>arr[mid]){
-        console.log("right: ",rightarr)
-        return BinarySearch(rightarr,n)
+    }else if(target>arr[mid]){
+        for(let i=mid+1;arr.length;i++){
+            rightArr.push(arr[i]);
+        }
+        return BinarySearch(rightArr,target);
+    }else if(target<arr[mid]){
+        for(let i=mid-1;0;i--){
+            leftArr.push(arr[i]);
+        };
+        return BinarySearch(leftArr,target);
     }else{
-        return -1;
-    }
+        return -1
+    };
 }
 
 // console.log(fibonacci(2));
