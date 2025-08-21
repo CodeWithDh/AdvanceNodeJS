@@ -1,10 +1,17 @@
 const {booksTable,authorsTable} =require("../Models/index.models")
-const {eq, Table} =require("drizzle-orm")
+const {eq, Table, ilike} =require("drizzle-orm")
 const db =require("../db/index")
 
 async function getBooks(req,res){
+    const search=req.query.search;//we use query here
+    if(search){
+        const books= await db.select().from(booksTable).where(ilike(booksTable.title,`%${search}%`))
+        return res.json(books)
+    }else{
     const books = await db.select().from(booksTable)
     res.json(books)
+    }
+    
 }
 
 async function getBookById(req,res){
