@@ -1,4 +1,4 @@
-const {defineConfig}=require("drizzle-kit")
+const {defineConfig}=require("./node_modules/drizzle-kit")
 // dirzzle-kit is used for sending UI for your DB.
 const config=defineConfig({
     dialect:postgres,
