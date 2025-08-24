@@ -34,20 +34,22 @@ app.post("/signUp",async(req,res)=>{
         email,
         password,
     }
-    console.log(emails);
-    console.log(diary);
-    return res.status(201).json({msg:"SignUp successfully"})
+    return res.status(201).json({msg:"SignUp successfully",token:`${token}`})
 
 })
 
-app.post("/login",async(req,res)=>{
-    let{email,password}=req.body;
+app.post("/profile",async(req,res)=>{
+    let{token}=req.body;
 
-    if(!email){
-        return res.status(400).json({msg:`Missing Email`})
+    if(!token){
+        return res.status(400).json({msg:`Missing Token`})
     }
-    if(!emails.has(email)){
-        return res.status(404).json({msg:`User Not found with : ${email}`})
+    if(!(token in diary)){
+        return res.status(404).json({msg:`Invalid Token : ${token}`})
     }
+
+    const profile=diary[token];
+
+    res.status(200).json(profile)
 
 })
